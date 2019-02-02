@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Application;
 
 namespace ContactsDotNet
 {
@@ -19,9 +20,59 @@ namespace ContactsDotNet
     /// </summary>
     public partial class ContactWindow : Window
     {
-        public ContactWindow()
+        private Contact contact;
+
+        public ContactWindow(Contact contact)
         {
             InitializeComponent();
+
+            if (contact.Name.Length > 0)
+            {
+                var name = contact.Name.Split(' ')[0];
+                this.Title = name;
+            }
+            else
+            {
+                this.Title = "Nowy kontakt";
+            }
+
+            NameTextBox.Text = contact.Name;
+            PositionTextBox.Text = contact.Position;
+            NumberTextBox.Text = contact.PhoneNumber;
+            EmailTextBox.Text = contact.Email;
+            WebsiteTextBox.Text = contact.Website;
+            AddressTextBox.Text = contact.Address;
+            NotesTextBox.Text = contact.Notes;
+
+            this.contact = contact;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            contact.Name = NameTextBox.Text;
+            contact.Position = PositionTextBox.Text;
+            contact.PhoneNumber = NumberTextBox.Text;
+            contact.Email = EmailTextBox.Text;
+            contact.Website = WebsiteTextBox.Text;
+            contact.Address = AddressTextBox.Text;
+            contact.Notes = NotesTextBox.Text;
+
+            if (contact.Name.Length > 0)
+            {
+                var name = contact.Name.Split(' ')[0];
+                this.Title = name;
+            }
+            else
+            {
+                this.Title = "Nowy kontakt";
+            }
+
+            this.Close();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
