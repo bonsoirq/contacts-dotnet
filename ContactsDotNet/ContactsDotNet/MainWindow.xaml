@@ -20,10 +20,10 @@
         <ListView x:Name="ContactsList" Margin="0,20,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="L.p." Width="32"/>
-                    <GridViewColumn Header="Nazwa" Width="140"/>
-                    <GridViewColumn Header="Numer telefonu" Width="120"/>
-                    <GridViewColumn Header="Adres email" Width="140"/>
+                    <GridViewColumn Header="L.p." Width="32" DisplayMemberBinding="{Binding Index}"/>
+                    <GridViewColumn Header="Nazwa" Width="140" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Numer telefonu" Width="120" DisplayMemberBinding="{Binding PhoneNumber}"/>
+                    <GridViewColumn Header="Adres email" Width="140" DisplayMemberBinding="{Binding Email}"/>
                 </GridView>
             </ListView.View>
         </ListView>

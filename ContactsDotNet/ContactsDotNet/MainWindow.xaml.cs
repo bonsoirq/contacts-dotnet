@@ -28,7 +28,6 @@ namespace ContactsDotNet
         public MainWindow()
         {
             InitializeComponent();
-            ContactsList.ItemsSource = App.Repository;
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -61,6 +60,7 @@ namespace ContactsDotNet
                     csv = reader.ReadLine();
                 }
                 reader.Close();
+                RenderList();
             }
         }
 
@@ -68,6 +68,16 @@ namespace ContactsDotNet
         {
             var contactWindow = new EditContactWindow(App.Repository);
             contactWindow.Show();
+        }
+
+        public void RenderList()
+        {
+            ContactsList.Items.Clear();
+            foreach (var x in App.Repository)
+            {
+                ContactsList.Items.Add(x);
+            }
+           
         }
     }
 }
