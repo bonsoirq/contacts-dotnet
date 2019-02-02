@@ -33,46 +33,29 @@ namespace ContactsDotNet
             }
             else
             {
-                this.Title = "Nowy kontakt";
+                this.Title = "Kontakt";
             }
 
-            NameTextBox.Text = contact.Name;
-            PositionTextBox.Text = contact.Position;
-            NumberTextBox.Text = contact.PhoneNumber;
-            EmailTextBox.Text = contact.Email;
-            WebsiteTextBox.Text = contact.Website;
-            AddressTextBox.Text = contact.Address;
-            NotesTextBox.Text = contact.Notes;
+            NameLabel.Content = contact.Name;
+            PositionLabel.Content = contact.Position;
+            NumberLabel.Content = contact.PhoneNumber;
+            EmailLabel.Content = contact.Email;
+            WebsiteLabel.Content = contact.Website;
+            AddressLabel.Content = contact.Address;
+            NotesLabel.Content = contact.Notes;
 
             this.contact = contact;
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            contact.Name = NameTextBox.Text;
-            contact.Position = PositionTextBox.Text;
-            contact.PhoneNumber = NumberTextBox.Text;
-            contact.Email = EmailTextBox.Text;
-            contact.Website = WebsiteTextBox.Text;
-            contact.Address = AddressTextBox.Text;
-            contact.Notes = NotesTextBox.Text;
-
-            if (contact.Name.Length > 0)
-            {
-                var name = contact.Name.Split(' ')[0];
-                this.Title = name;
-            }
-            else
-            {
-                this.Title = "Nowy kontakt";
-            }
-
-            this.Close();
+            var contactWindow = new EditContactWindow(contact);
+            contactWindow.Show();
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
     }
 }
