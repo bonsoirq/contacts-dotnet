@@ -15,11 +15,14 @@
             </ListView.View>
         </ListView>
         <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="442">
-            <MenuItem x:Name="File" Header="Plik" Height="20" Width="32">
-                <MenuItem x:Name="NewFile" Header="Nowy" HorizontalAlignment="Left" Height="20" Width="140"/>
-                <MenuItem x:Name="OpenFile" Header="Otwórz" HorizontalAlignment="Left" Height="20" Width="140"/>
+            <MenuItem x:Name="MenuFile" Header="Plik" Height="20" Width="32">
+                <MenuItem x:Name="NewFile" Header="Nowy" HorizontalAlignment="Left" Height="20" Width="140" Click="NewFile_Click"/>
+                <MenuItem x:Name="OpenFile" Header="Otwórz" HorizontalAlignment="Left" Height="20" Width="140" Click="OpenFile_Click"/>
             </MenuItem>
-            <MenuItem x:Name="About" Header="Pomoc" Height="20" Width="48" Click="About_Click"/>
+            <MenuItem x:Name="MenuContact" Header="Kontakty" Height="20" Width="59" IsEnabled="False">
+                <MenuItem x:Name="NewContact" Header="Nowy kontakt" Height="20"/>
+            </MenuItem>
+            <MenuItem x:Name="MenuAbout" Header="O Aplikacji" Height="20" Width="73" Click="About_Click"/>
         </Menu>
     </Grid>
 </Window>
