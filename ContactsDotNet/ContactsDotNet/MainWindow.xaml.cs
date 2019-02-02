@@ -66,7 +66,7 @@ namespace ContactsDotNet
 
         private void NewContact_Click(object sender, RoutedEventArgs e)
         {
-            var contactWindow = new EditContactWindow(Application.Repository);
+            var contactWindow = new EditContactWindow(App.Repository);
             contactWindow.Show();
         }
     }
