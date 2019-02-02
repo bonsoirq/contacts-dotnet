@@ -21,11 +21,20 @@ namespace ContactsDotNet
     public partial class ContactWindow : Window
     {
         private Contact contact;
+        private object parent;
 
-        public ContactWindow(Contact contact)
+        public ContactWindow(object parent, Contact contact)
         {
             InitializeComponent();
 
+            this.contact = contact;
+            this.parent = parent;
+
+            this.ReloadContact();
+        }
+
+        public void ReloadContact()
+        {
             if (contact.Name.Length > 0)
             {
                 var name = contact.Name.Split(' ')[0];
@@ -44,17 +53,27 @@ namespace ContactsDotNet
             AddressLabel.Content = contact.Address;
             NotesLabel.Content = contact.Notes;
 
-            this.contact = contact;
+            var parent = (this.parent as MainWindow);
+            if (parent != null)
+            {
+                parent.RenderList();
+            }
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var contactWindow = new EditContactWindow(contact);
+            var contactWindow = new EditContactWindow(this, contact);
             contactWindow.Show();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            var parent = (this.parent as MainWindow);
+            if (parent != null)
+            {
+                parent.App.Repository.Remove(contact);
+                parent.RenderList();
+            }
             this.Close();
         }
     }

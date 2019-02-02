@@ -66,8 +66,8 @@ namespace ContactsDotNet
 
         private void NewContact_Click(object sender, RoutedEventArgs e)
         {
-            var contactWindow = new EditContactWindow(App.Repository);
-            contactWindow.Show();
+            var editContactWindow = new EditContactWindow(this, App.Repository);
+            editContactWindow.Show();
         }
 
         public void RenderList()
@@ -78,6 +78,17 @@ namespace ContactsDotNet
                 ContactsList.Items.Add(x);
             }
            
+        }
+
+        private void ContactsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var index = (sender as ListView).SelectedIndex;
+            if (index == -1)
+                return;
+
+            var contact = App.Repository.Find(index+1);
+            var contactWindow = new ContactWindow(this, contact);
+            contactWindow.Show();
         }
     }
 }
