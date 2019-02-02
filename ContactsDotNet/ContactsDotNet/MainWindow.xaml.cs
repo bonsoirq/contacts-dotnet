@@ -22,6 +22,8 @@ namespace ContactsDotNet
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Application.Application Application { get; protected set; } = new Application.Application();
+
         public MainWindow()
         {
             InitializeComponent();
