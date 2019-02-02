@@ -8,6 +8,6 @@ namespace Application
 {
     public class Application
     {
-        public IRepository<Contact> Repository = new ContactRepository();
+        public ContactRepository Repository = new ContactRepository();
     }
 }

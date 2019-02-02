@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class ContactRepository : IRepository<Contact>
+    public class ContactRepository : IRepository<Contact>, IEnumerable<Contact>
     {
         private List<Contact> _contacts = new List<Contact>();
 
@@ -20,8 +20,18 @@ namespace Application
 
         public void Add(Contact contact)
         {
-            contact.Index = _contacts.Max(x => x.Index) + 1;
+            contact.Index = _contacts.Count == 0 ? 1 : _contacts.Max(x => x.Index) + 1;
             _contacts.Add(contact);
+        }
+
+        public IEnumerator<Contact> GetEnumerator()
+        {
+            return _contacts.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _contacts.GetEnumerator();
         }
     }
 }

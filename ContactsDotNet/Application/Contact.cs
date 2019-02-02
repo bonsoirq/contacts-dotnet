@@ -21,5 +21,28 @@ namespace Application
         {
             return $"{Index},{Name},{Position},{PhoneNumber},{Email},{Website},{Address},{Notes}";
         }
+
+        public static Contact Parse(string csv)
+        {
+            var contact = new Contact();
+            string[] properties = csv.Split(',');
+            try
+            {
+                var index = int.Parse(properties[0]);
+                contact.Index = index;
+                contact.Name = properties[1];
+                contact.Position = properties[2];
+                contact.PhoneNumber = properties[3];
+                contact.Email = properties[4];
+                contact.Website = properties[5];
+                contact.Address = properties[6];
+                contact.Notes = properties[7];
+            }
+            catch (Exception)
+            {
+                throw new FormatException("Provide valid Contact CSV format");
+            }
+            return contact;
+        }
     }
 }

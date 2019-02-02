@@ -22,11 +22,12 @@ namespace ContactsDotNet
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Application.Application Application { get; protected set; } = new Application.Application();
+        public Application.Application App { get; protected set; } = new Application.Application();
 
         public MainWindow()
         {
             InitializeComponent();
+            ContactsList.ItemsSource = App.Repository;
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -34,7 +35,7 @@ namespace ContactsDotNet
             MessageBox.Show("Kontakty ⓒ 2019 Jarosław Bąk & Maksymilian Galas", "O aplikacji");
         }
 
-        private void NewFile_Click(object sender, RoutedEventArgs e)
+        private void SaveFile_Click(object sender, RoutedEventArgs e)
         {
             var fileDialog = new SaveFileDialog();
             fileDialog.AddExtension = true;
@@ -51,12 +52,12 @@ namespace ContactsDotNet
             var fileDialog = new OpenFileDialog();
             if (fileDialog.ShowDialog(this) == true)
             {
-                var stream = new FileStream(fileDialog.FileName, FileMode.Open);
-                var reader = new StreamReader(stream);
-                var contactsData = new List<string>();
-                while (reader.ReadLine() != null)
+                var reader = new StreamReader(fileDialog.FileName);
+                string csv = reader.ReadLine();
+                while (csv != null)
                 {
-                    contactsData.Add(reader.ReadLine());
+                    App.Repository.Add(Application.Contact.Parse(csv));
+                    csv = reader.ReadLine();
                 }
                 reader.Close();
             }

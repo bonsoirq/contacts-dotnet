@@ -7,16 +7,9 @@
         mc:Ignorable="d"
         Title="Kontakty" Height="800" Width="450">
     <Grid>
-        <ListView x:Name="ContactLList" Margin="0,20,0,0">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
         <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="442">
             <MenuItem x:Name="MenuFile" Header="Plik" Height="20" Width="32">
-                <MenuItem x:Name="NewFile" Header="Nowy" HorizontalAlignment="Left" Height="20" Width="140" Click="NewFile_Click"/>
+                <MenuItem x:Name="SaveFile" Header="Zapisz" HorizontalAlignment="Left" Height="20" Width="140" Click="SaveFile_Click"/>
                 <MenuItem x:Name="OpenFile" Header="Otwórz" HorizontalAlignment="Left" Height="20" Width="140" Click="OpenFile_Click"/>
             </MenuItem>
             <MenuItem x:Name="MenuContact" Header="Kontakty" Height="20" Width="59" IsEnabled="False">
@@ -24,5 +17,15 @@
             </MenuItem>
             <MenuItem x:Name="MenuAbout" Header="O Aplikacji" Height="20" Width="73" Click="About_Click"/>
         </Menu>
+        <ListView x:Name="ContactsList" Margin="0,20,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="L.p." Width="32"/>
+                    <GridViewColumn Header="Nazwa" Width="140"/>
+                    <GridViewColumn Header="Numer telefonu" Width="120"/>
+                    <GridViewColumn Header="Adres email" Width="140"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
