@@ -19,8 +19,8 @@
                 <MenuItem x:Name="NewFile" Header="Nowy" HorizontalAlignment="Left" Height="20" Width="140" Click="NewFile_Click"/>
                 <MenuItem x:Name="OpenFile" Header="Otwórz" HorizontalAlignment="Left" Height="20" Width="140" Click="OpenFile_Click"/>
             </MenuItem>
-            <MenuItem x:Name="MenuContact" Header="Kontakty" Height="20" Width="59" IsEnabled="False">
-                <MenuItem x:Name="NewContact" Header="Nowy kontakt" Height="20"/>
+            <MenuItem x:Name="MenuContact" Header="Kontakty" Height="20" Width="59" IsEnabled="True">
+                <MenuItem x:Name="NewContact" Header="Nowy kontakt" Height="20" Click="NewContact_Click"/>
             </MenuItem>
             <MenuItem x:Name="MenuAbout" Header="O Aplikacji" Height="20" Width="73" Click="About_Click"/>
         </Menu>

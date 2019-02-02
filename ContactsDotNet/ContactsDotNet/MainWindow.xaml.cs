@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Application;
 
 namespace ContactsDotNet
 {
@@ -60,6 +61,14 @@ namespace ContactsDotNet
                 }
                 reader.Close();
             }
+        }
+
+        private void NewContact_Click(object sender, RoutedEventArgs e)
+        {
+            var contact = new Contact();
+            contact.Name = "Max Galas";
+            var contactWindow = new ContactWindow(contact);
+            contactWindow.Show();
         }
     }
 }
