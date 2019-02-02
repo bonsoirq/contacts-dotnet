@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ContactsDotNet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Kontakty" Height="800" Width="450">
     <Grid>
-        
+        <ListView x:Name="ContactLList" Margin="0,20,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Menu HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="442">
+            <MenuItem x:Name="File" Header="Plik" Height="20" Width="32">
+                <MenuItem x:Name="NewFile" Header="Nowy" HorizontalAlignment="Left" Height="20" Width="140"/>
+                <MenuItem x:Name="OpenFile" Header="Otwórz" HorizontalAlignment="Left" Height="20" Width="140"/>
+            </MenuItem>
+            <MenuItem x:Name="About" Header="Pomoc" Height="20" Width="48" Click="About_Click"/>
+        </Menu>
     </Grid>
 </Window>

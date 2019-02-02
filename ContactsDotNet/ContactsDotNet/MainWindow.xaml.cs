@@ -24,5 +24,10 @@ namespace ContactsDotNet
         {
             InitializeComponent();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Kontakty ⓒ 2019 Jarosław Bąk & Maksymilian Galas", "O aplikacji");
+        }
     }
 }
