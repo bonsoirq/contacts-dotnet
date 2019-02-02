@@ -22,6 +22,11 @@ namespace Application
             return $"{Index},{Name},{Position},{PhoneNumber},{Email},{Website},{Address},{Notes}";
         }
 
+        public string[] ToArray()
+        {
+            return new string[] { Index.ToString(), Name, PhoneNumber, Email };
+        }
+
         public static Contact Parse(string csv)
         {
             var contact = new Contact();
