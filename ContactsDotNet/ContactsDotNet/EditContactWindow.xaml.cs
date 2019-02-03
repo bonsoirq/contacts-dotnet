@@ -22,8 +22,9 @@ namespace ContactsDotNet
     {
         private Contact contact;
         private IRepository<Contact> repository;
+        private object parent;
 
-        public EditContactWindow(IRepository<Contact> repository)
+        public EditContactWindow(object parent, IRepository<Contact> repository)
         {
             InitializeComponent();
 
@@ -38,9 +39,10 @@ namespace ContactsDotNet
             NotesTextBox.Text = "";
 
             this.repository = repository;
+            this.parent = parent;
         }
 
-        public EditContactWindow(Contact contact)
+        public EditContactWindow(object parent, Contact contact)
         {
             InitializeComponent();
 
@@ -55,6 +57,7 @@ namespace ContactsDotNet
             NotesTextBox.Text = contact.Notes;
 
             this.contact = contact;
+            this.parent = parent;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -84,6 +87,19 @@ namespace ContactsDotNet
                 contact.Notes = NotesTextBox.Text;
             }
 
+            var mainWindow = (this.parent as MainWindow);
+            if (mainWindow != null)
+            {
+                mainWindow.RenderList();
+            }
+            else
+            {
+                var contactWindow = (this.parent as ContactWindow);
+                if (contactWindow != null)
+                {
+                    contactWindow.ReloadContact();
+                }
+            }
             this.Close();
         }
     }

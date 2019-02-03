@@ -32,7 +32,7 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Button x:Name="EditButton" Grid.Column="0" Content="Edytuj" Margin="10,0,10,10" Height="40" VerticalAlignment="Bottom" Click="EditButton_Click"/>
-            <Button x:Name="CloseButton" Grid.Column="1" Content="Zamknij" Margin="10,0,10,10" Height="40" VerticalAlignment="Bottom" Click="CloseButton_Click"/>
+            <Button x:Name="DeleteButton" Grid.Column="1" Content="Usuń" Margin="10,0,10,10" Height="40" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -17,7 +17,7 @@
             </MenuItem>
             <MenuItem x:Name="MenuAbout" Header="O Aplikacji" Height="20" Width="73" Click="About_Click"/>
         </Menu>
-        <ListView x:Name="ContactsList" Margin="0,20,0,0">
+        <ListView x:Name="ContactsList" Margin="0,20,0,0" PreviewMouseLeftButtonUp="ContactsList_PreviewMouseLeftButtonUp">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="L.p." Width="32" DisplayMemberBinding="{Binding Index}"/>
