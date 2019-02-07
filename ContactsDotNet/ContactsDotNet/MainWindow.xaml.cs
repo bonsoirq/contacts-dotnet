@@ -43,7 +43,12 @@ namespace ContactsDotNet
             fileDialog.DefaultExt = "cnt";
             if (fileDialog.ShowDialog(this) == true)
             {
-                File.Create(fileDialog.FileName);
+                var writer = new StreamWriter(fileDialog.FileName);
+                foreach (var x in App.Repository)
+                {
+                    writer.WriteLine(x.ToCsv());
+                }
+                writer.Close();
             }
         }
 
